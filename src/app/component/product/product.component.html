@@ -1,0 +1,55 @@
+<div *ngIf="dataLoaded==false" class="text-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+<div class="container">
+  <app-navi></app-navi>
+  <div class="row">
+    <div class="col-md-3">
+      <app-category></app-category>
+    </div>
+    <div class="col-md-9">
+      <div class="mb-3">
+        <label for="filterText" class="form-label">Ürün ara</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+      </div>
+       <div *ngIf="filterText" class="alert alert-success">
+        {{filterText}}
+
+
+      </div>
+
+      <button [routerLink]="['products/add']" class="btn btn-primary">Ürün Ekle</button>
+        <table class="table"  *ngIf="dataLoaded==true">
+         <thead>
+          <tr>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Completed</th>
+            <th>Vat (Kdv) %</th>
+            <th></th>
+          </tr>
+         </thead>
+
+          <tbody>
+            <tr *ngFor="let product of productsList | filterPipe :filterText">
+              <td> {{product.id }}</td>
+              <td>{{product.title | uppercase}}</td>
+              <td>{{product.userId}}</td>
+              <td> {{product.completed }}</td>
+              <td> {{product.id * 3.4 | vatAdded:10 | currency}}</td>
+              <td><button (click)="addToCart(product)" type="button" class="btn btn-success"> Sepete Ekle </button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+
+
+

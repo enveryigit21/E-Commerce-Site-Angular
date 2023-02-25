@@ -1,0 +1,8 @@
+<button *ngIf="cartItems.length>0"  class="btn btn-danger mx-3"  mat-button [matMenuTriggerFor]="menu">Sepetiniz</button>
+<mat-menu #menu="matMenu">
+  <li mat-menu-item *ngFor="let cardItem of cartItems"> <a > <span class="badge bg-primary">{{cardItem.quantity}}</span>
+    {{cardItem.product.title}}<span (click)="removeFormCart(cardItem.product)" class="badge bg-danger"> Sil</span> </a></li>
+
+  <hr>
+  <li mat-menu-item> Sepete git</li>
+</mat-menu>

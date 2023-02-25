@@ -1,0 +1,24 @@
+<div class="content">
+ <div class="col-md-12">
+  <div class="card">
+    <div class="card-header"><h5 class="title"> Ürün Ekle</h5></div>
+    <div class="card-body">
+      <form [formGroup]="productAddForm" >
+        <div class="form-group">
+          <label for="userId">userId</label>
+          <input type="number" id="userId" formControlName="userId" placeholder="userId" class="form-control" />
+          <label for="userId">id</label>
+          <input type="number" id="id" formControlName="id" placeholder="id" class="form-control" />
+          <label for="userId">title</label>
+          <input type="text" id="title" formControlName="title" placeholder="title" class="form-control" />
+          <label for="userId">completed</label>
+          <input type="text" id="completed" formControlName="completed" placeholder="completed" class="form-control" />
+        </div>
+      </form>
+    </div>
+    <div> <button  class="btn btn-primary btn-fill" (click)="add()"> Ekle </button> </div>
+  </div>
+ </div>
+</div>
+
+
